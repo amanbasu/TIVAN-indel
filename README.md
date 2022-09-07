@@ -34,6 +34,10 @@ Install requirements
 pip install -r requirements.txt
 ```
 
+### DanQ model
+
+The trained weights of DanQ model are provided in the `checkpoint/` directory, while the model code is present in `models/` directory. You can train your own model by using data from DeepSEA website (http://deepsea.princeton.edu/help/).
+
 <!--
 You can learn more about the script arguments using the `-h` command for individual files
 
@@ -54,13 +58,7 @@ optional arguments:
 ```
 
 
-### Train base model
 
-To train one DeepPHiC-Base model per tissue. You can contol the promoter-promoter (pp) or promoter-enhancer (pe) interaction type using the `--type` argument. Set `--test False` if you want to train the model for all available tissues.
-
-```bash
-python train_base.py --type pp --epochs 1 --test True
-```
 
 ### Train shared model
 
