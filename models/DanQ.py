@@ -1,7 +1,7 @@
 import tensorflow as tf
 from models.BaseModel import BaseModel
 
-# https://github.com/jiawei6636/Bioinfor-DanQ
+# source https://github.com/jiawei6636/Bioinfor-DanQ
 
 class DanQ(BaseModel):
     def __init__(
