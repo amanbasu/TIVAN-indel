@@ -6,7 +6,7 @@ from utils import *
 nFolds = 5
 tissue = 'Whole_Blood'
 
-hf = h5py.File('../data/{tissue}.h5', 'r')
+hf = h5py.File(f'../data/{tissue}.h5', 'r')
 ref = np.array(hf['feat_ref'])
 alt = np.array(hf['feat_alt'])
 annot = np.array(hf['annot'])
@@ -51,7 +51,6 @@ for fold in range(nFolds):
     y_train = label[train_idx]
     x_test = X[test_idx]
     y_test = label[test_idx]
-    print(x_test.shape)
 
     dtrain = xgb.DMatrix(x_train, label=y_train)
     dtest = xgb.DMatrix(x_test, label=y_test)
@@ -68,13 +67,11 @@ for fold in range(nFolds):
     bst = xgb.train(params, dtrain, 100, evallist, 
         early_stopping_rounds=20, verbose_eval=False
     )
-    bst.save_model(
-        f'../res/{tissue}.json'
-    )
     res = bst.predict(dtest)
     preds += list(res)
     labs += list(y_test)
 
+bst.save_model(f'../res/{tissue}.json')
 stats = get_stats(np.array(labs).reshape(-1, 1), np.array(preds).reshape(-1, 1))
 with open(f'../res/{tissue}_stats.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=4)

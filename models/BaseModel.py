@@ -8,7 +8,7 @@ class BaseModel:
         learning_rate=1e-3,
         name='BaseModel'
     ):
-        self.checkpoint = f'../res/checkpoint/{name}'
+        self.checkpoint = f'../checkpoint/{name}'
         self.classes = classes
         self.shape = shape
         self.learning_rate = learning_rate

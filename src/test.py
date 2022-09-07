@@ -11,7 +11,7 @@ model.load_model(f'../res/Whole_Blood.json')
 
 np.random.seed(0)
 
-hf = h5py.File(f'{tissue}.h5', 'r')
+hf = h5py.File(f'../data/{tissue}.h5', 'r')
 ref = np.array(hf['feat_ref'])
 alt = np.array(hf['feat_alt'])
 annot = np.array(hf['annot'])
@@ -24,5 +24,5 @@ dtest = xgb.DMatrix(norm(X), label=label)
 res = model.predict(dtest)
 
 stats = get_stats(label, res)
-with open(f'../res/{tissue}_xgb.json', 'w', encoding='utf-8') as f:
+with open(f'../res/{tissue}_test.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=4)

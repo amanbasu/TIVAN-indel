@@ -1,15 +1,11 @@
 library(stringr)
 
+base_path = '../data/'
 tissue = 'CD4_NAIVE'
-base_path = '../res/'
-rda_file = paste0(base_path, tissue, '.trainingset.rda')
 
-load(rda_file)
+load(paste0(base_path, tissue, '.trainingset.rda'))
 
-df <- data.frame(annot.pos)
-write.table(df, file=paste0(base_path, tissue_name, '.annot_pos.csv'), quote=F, sep=",", row.names=F)
-rm(df)
-
-df <- data.frame(annot.neg)
-write.table(df, file=paste0(base_path, tissue_name, '.annot_neg.csv'), quote=F, sep=",", row.names=F)
-rm(df)
+df_pos <- data.frame(annot.pos)
+df_neg <- data.frame(annot.neg)
+df <- rbind(df_pos, df_neg)
+write.table(df, file=paste0(base_path, tissue, '.annot.csv'), quote=F, sep=",", row.names=F)
