@@ -6,6 +6,7 @@ from utils import *
 nFolds = 5
 tissue = 'CD4_NAIVE'
 
+# load saved model
 model = xgb.Booster()
 model.load_model(f'../res/Whole_Blood.json')
 
@@ -19,8 +20,9 @@ label = np.array(hf['label'])
 hf.close()
 
 X = np.hstack([annot, ref, alt])
+X = norm(X)
 
-dtest = xgb.DMatrix(norm(X), label=label)
+dtest = xgb.DMatrix(X, label=label)
 res = model.predict(dtest)
 
 stats = get_stats(label, res)

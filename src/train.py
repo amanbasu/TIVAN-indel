@@ -16,6 +16,7 @@ hf.close()
 X = np.hstack([annot, ref, alt])
 X = norm(X)
 
+# divide data for k-fold
 size = len(label)
 index_p = np.where(label==1)[0].tolist()
 index_n = np.where(label==0)[0].tolist()
@@ -27,7 +28,7 @@ np.random.shuffle(index_n)
 span_p = len(index_p) // nFolds
 span_n = len(index_n) // nFolds
 
-labs, preds, indx = [], [], []
+labs, preds = [], []
 for fold in range(nFolds):
     print(f'Fold {fold+1}/{nFolds}')
 
@@ -52,6 +53,7 @@ for fold in range(nFolds):
     x_test = X[test_idx]
     y_test = label[test_idx]
 
+    # train XGB model
     dtrain = xgb.DMatrix(x_train, label=y_train)
     dtest = xgb.DMatrix(x_test, label=y_test)
     evallist = [(dtrain, 'train'), (dtest, 'eval')]
@@ -73,5 +75,4 @@ for fold in range(nFolds):
 
 bst.save_model(f'../res/{tissue}.json')
 stats = get_stats(np.array(labs).reshape(-1, 1), np.array(preds).reshape(-1, 1))
-with open(f'../res/{tissue}_stats.json', 'w', encoding='utf-8') as f:
-    json.dump(stats, f, ensure_ascii=False, indent=4)
+print(stats)
