@@ -86,6 +86,12 @@ BiocManager::install("GenomicRanges")
 install.packages("data.table")
 ```
 
+All noncoding small indels in 1000 Genomes and the precomputed scores for 44 tissues/cell types in GTEX can be downloaded from [Here](https://drive.google.com/drive/folders/1fZ_V4_2sr-lPCa1HItXoUIvJ40qa_w_h?usp=share_link)
+
+getscore.R could be downloaded [Here](https://github.com/lichen-lab/TIVAN-indel/blob/master/getscore.R)
+
+
+
 
 
 
