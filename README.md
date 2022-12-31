@@ -86,9 +86,101 @@ BiocManager::install("GenomicRanges")
 install.packages("data.table")
 ```
 
-All noncoding small indels in 1000 Genomes and the precomputed scores for 44 tissues/cell types in GTEX can be downloaded from [Here](https://drive.google.com/drive/folders/1fZ_V4_2sr-lPCa1HItXoUIvJ40qa_w_h?usp=share_link)
+### Data and code preparation
 
-getscore.R could be downloaded [Here](https://github.com/lichen-lab/TIVAN-indel/blob/master/getscore.R)
+- All noncoding small indels in 1000 Genomes (sindel.noncoding.1kg.rda) can be downloaded from [Here](https://drive.google.com/file/d/1u7PV9JqM1YmllutP56Gv0faP_Yhf1h4_/view?usp=share_link)
+
+- The precomputed scores for All noncoding small indels in 1000 Genomes across 44 tissues/cell types (e.g., Adipose_Subcutaneous.score.rda) in GTEX can be downloaded from [Here](https://drive.google.com/drive/folders/1fZ_V4_2sr-lPCa1HItXoUIvJ40qa_w_h?usp=share_link). The 44 tissues/cell types from GTEX are summarized in the following table.
+
+
+|Tissue                                |Tissue.class  |
+|:-------------------------------------|:-------------|
+|Adipose_Subcutaneous                  |Adipose       |
+|Adipose_Visceral_Omentum              |Adipose       |
+|Adrenal_Gland                         |Adrenal Gland |
+|Artery_Aorta                          |Artery        |
+|Artery_Coronary                       |Artery        |
+|Artery_Tibial                         |Artery        |
+|Brain_Anterior_cingulate_cortex_BA24  |Brain         |
+|Brain_Caudate_basal_ganglia           |Brain         |
+|Brain_Cerebellar_Hemisphere           |Brain         |
+|Brain_Cerebellum                      |Brain         |
+|Brain_Cortex                          |Brain         |
+|Brain_Frontal_Cortex_BA9              |Brain         |
+|Brain_Hippocampus                     |Brain         |
+|Brain_Hypothalamus                    |Brain         |
+|Brain_Nucleus_accumbens_basal_ganglia |Brain         |
+|Brain_Putamen_basal_ganglia           |Brain         |
+|Breast_Mammary_Tissue                 |Breast        |
+|Cells_EBV-transformed_lymphocytes     |Lymphocytes   |
+|Cells_Transformed_fibroblasts         |Fibroblasts   |
+|Colon_Sigmoid                         |Colon         |
+|Colon_Transverse                      |Colon         |
+|Esophagus_Gastroesophageal_Junction   |Esophagus     |
+|Esophagus_Mucosa                      |Esophagus     |
+|Esophagus_Muscularis                  |Esophagus     |
+|Heart_Atrial_Appendage                |Heart         |
+|Heart_Left_Ventricle                  |Heart         |
+|Liver                                 |Liver         |
+|Lung                                  |Lung          |
+|Muscle_Skeletal                       |Muscle        |
+|Nerve_Tibial                          |Nerve         |
+|Ovary                                 |Ovary         |
+|Pancreas                              |Pancreas      |
+|Pituitary                             |Pituitary     |
+|Prostate                              |Prostate      |
+|Skin_Not_Sun_Exposed_Suprapubic       |Skin          |
+|Skin_Sun_Exposed_Lower_leg            |Skin          |
+|Small_Intestine_Terminal_Ileum        |Intestine     |
+|Spleen                                |Spleen        |
+|Stomach                               |Stomach       |
+|Testis                                |Testis        |
+|Thyroid                               |Thyroid       |
+|Uterus                                |Uterus        |
+|Vagina                                |Vagina        |
+|Whole_Blood                           |Blood         |
+
+
+- TIVAN-indel.R: R software to retrieve the precomputed scores for query sindels can be downloaded [Here](https://drive.google.com/file/d/14pumyX5GTb-DpKj5lIaSMsQPY9Ixlg9Q/view?usp=share_link)
+
+- region.txt: query regions in the following example can downloaded [Here](https://drive.google.com/file/d/1uqJF0gIePA1nrqOMVGrn0bh3AzukQuJO/view?usp=share_link)
+
+
+### Command line arguments
+
+- Usage: R --slave --args --no-save arg1 arg2 arg3 arg4 < TIVAN-indel.R 
+  - arg1: Input region: regionfile of small indels. The file has three columns "chr start end" with space/tab-delimited (chr1 10001 20000)
+  - arg2: A file of all known 1000 Genome indels
+  - arg3: A file/files of pre-computed score of 1000 Genome indels, multiple files are separated by comma
+  - arg4: A output file contains retrieved scores for sindels in query region
+
+
+### Examples
+
+
+### Example One: Interested in one tissue at a time
+```r 
+R --slave --args --no-save region.txt sindel.noncoding.1kg.rda Adipose_Subcutaneous.score.rda output.txt  < TIVAN-indel.R
+```
+
+
+### Example Two: Interested in multiple tissues at the same time
+```r 
+R --slave --args --no-save region.txt sindel.noncoding.1kg.rda Adipose_Subcutaneous.score.rda,Adipose_Visceral_Omentum.score.rda output.txt  < TIVAN-indel.R
+``
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
