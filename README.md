@@ -143,7 +143,10 @@ install.packages("data.table")
 
 - TIVAN-indel.R: R software to retrieve the precomputed scores for query sindels can be downloaded [Here](https://drive.google.com/file/d/14pumyX5GTb-DpKj5lIaSMsQPY9Ixlg9Q/view?usp=share_link)
 
-- region.txt: query regions in the following example can downloaded [Here](https://drive.google.com/file/d/1uqJF0gIePA1nrqOMVGrn0bh3AzukQuJO/view?usp=share_link)
+- region.txt: query regions in the following example can downloaded [Here](https://drive.google.com/file/d/1uqJF0gIePA1nrqOMVGrn0bh3AzukQuJO/view?usp=share_link), such as:
+
+
+<img width="881" alt="Screen Shot 2022-12-31 at 4 05 17 PM" src="https://user-images.githubusercontent.com/29525389/210155683-13f95a25-415d-47ae-bcc5-30d37b92f139.png">
 
 
 ### Command line arguments
@@ -158,12 +161,12 @@ install.packages("data.table")
 ### Examples
 
 
-### Example One: Interested in one tissue at a time
+- Example One: Interested in one tissue at a time
 ```r 
 R --slave --args --no-save region.txt sindel.noncoding.1kg.rda Adipose_Subcutaneous.score.rda output.txt  < TIVAN-indel.R
 ```
 
-### Example Two: Interested in multiple tissues at the same time
+- Example Two: Interested in multiple tissues at the same time
 ```r 
 R --slave --args --no-save region.txt sindel.noncoding.1kg.rda Adipose_Subcutaneous.score.rda,Adipose_Visceral_Omentum.score.rda output.txt  < TIVAN-indel.R
 ```
