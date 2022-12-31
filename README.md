@@ -163,28 +163,15 @@ install.packages("data.table")
 R --slave --args --no-save region.txt sindel.noncoding.1kg.rda Adipose_Subcutaneous.score.rda output.txt  < TIVAN-indel.R
 ```
 
-
 ### Example Two: Interested in multiple tissues at the same time
 ```r 
 R --slave --args --no-save region.txt sindel.noncoding.1kg.rda Adipose_Subcutaneous.score.rda,Adipose_Visceral_Omentum.score.rda output.txt  < TIVAN-indel.R
-``
+```
 
 
+The expected otuput from Example Two is:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="881" alt="Screen Shot 2022-12-31 at 4 05 17 PM" src="https://user-images.githubusercontent.com/29525389/210155653-b3f622be-af92-4589-8fc1-dea9de285bda.png">
 
 
 
