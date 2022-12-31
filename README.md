@@ -70,3 +70,29 @@ The TIVAN-indel model trained in the above section can be used to make predictio
 ```bash
 python predict.py --train_tissue Whole_Blood --test_tissue CD4_NAIVE
 ```
+
+## Obtain precomputed tissue-specific functional scores for query small indels
+
+### R package installation
+Two R packages "GenomicRanges" and "data.table" are required to retrieve tissue-specific functional scores for query small indels.
+
+```r
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("GenomicRanges")
+```
+
+```r
+install.packages("data.table")
+```
+
+
+
+
+
+
+
+
+
+
+
