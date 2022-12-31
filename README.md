@@ -150,13 +150,14 @@ install.packages("data.table")
 
 
 ### Command line arguments
-
+```r 
 - Usage: R --slave --args --no-save arg1 arg2 arg3 arg4 < TIVAN-indel.R 
+
   - arg1: Input region: regionfile of small indels. The file has three columns "chr start end" with space/tab-delimited (chr1 10001 20000)
   - arg2: A file of all known 1000 Genome indels
   - arg3: A file/files of pre-computed score of 1000 Genome indels, multiple files are separated by comma
   - arg4: A output file contains retrieved scores for sindels in query region
-
+```
 
 ### Examples
 
