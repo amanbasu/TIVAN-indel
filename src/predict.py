@@ -6,16 +6,13 @@ import pandas as pd
 
 np.random.seed(0)
 
-def predict_n_save(X, y, args):
+def predict_n_save(X, args):
     # load saved model
     model = xgb.Booster()
     model.load_model(args.model)
 
-    dtest = xgb.DMatrix(X, label=y)
+    dtest = xgb.DMatrix(X)
     res = model.predict(dtest)
-
-    stats = get_stats(y, res)
-    print(stats)
 
     ## save results
     df = pd.DataFrame(res, columns=['score'])
@@ -39,5 +36,5 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
 
-    X, y = read_features(args.path)
-    predict_n_save(X, y, args)
+    X, _ = read_features(args.path)
+    predict_n_save(X, args)
