@@ -13,6 +13,7 @@ TIVAN-Indel is implemented by both R and Python and the requirements are
 
 ```
 python==3.9.6
+
 xgboost==1.5.1
 h5py==3.1.0
 matplotlib==3.4.3
@@ -26,6 +27,7 @@ tensorflow==2.6.0
 ### R and R packages
 ```
 R==4.1.1
+
 BSgenome.Hsapiens.UCSC.hg19
 data.table
 ```
@@ -61,7 +63,7 @@ BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
 
 ### Prepare training data
 
-We use a compilation of both generic functional annotations and tissue-specific functional annotations to train the TIVAN-indel model. Given query sindels (example: [train/snp.pos.txt](train/snp.pos.txt)), R script ``prepare.R" will generated (1) CADD annotations for query sindels and (2) reference genomic sequence and alterntive genomic sequence with sindels. A R rda file ``CADD.indel.rda" contains the CADD annotations for all indels in 1000 Genome Project can be downloaded [Here](https://drive.google.com/file/d/1Eio1YYZNmrVIoqFg6r-GUTGuwjudi30P/view?usp=share_link) 
+We use a compilation of both generic functional annotations and tissue-specific functional annotations to train the TIVAN-indel model. Given query sindels (example: [train/snp.pos.txt](train/snp.pos.txt)), R script `prepare.R` will generated (1) CADD annotations for query sindels and (2) reference genomic sequence and alterntive genomic sequence with sindels. The rda file `CADD.indel.rda` contains the CADD annotations for all indels in 1000 Genome Project can be downloaded [here](https://drive.google.com/file/d/1Eio1YYZNmrVIoqFg6r-GUTGuwjudi30P/view?usp=share_link).
 
 
 Running the R command line with four arguments
@@ -79,7 +81,7 @@ R --slave --args --no-save CADD.indel.rda train/snp.pos.txt train/snp.neg.txt tr
 ```
 
 
-The output files are stored in the ``train" folder, which contains five files as below
+The output files are stored in the `train` folder, which contains five files as below
 
 ```bash
 - annot.csv: (example: [train/annot.csv](train/annot.csv)), which contains CADD annotations for both positive indels and negative indels. 
@@ -119,7 +121,7 @@ python prepare.py --path ../test
 
 ### Train TIVAN-indel model
 
-The model architecture is described in Figure 1 (Part C). It uses a compilation of both 45 CADD annotations and 919 multi-omics features as generated above. We call ``train.py" to train the model
+The model architecture is described in Figure 1 (Part C). It uses a compilation of both 45 CADD annotations and 919 multi-omics features as generated above. We call `train.py` to train the model
 
 ```bash
 python train.py --path ../train --output ../res/model.json
@@ -127,7 +129,7 @@ python train.py --path ../train --output ../res/model.json
 
 ### Predict
 
-For given new indels (example: [test/snp.pos.txt](test/snp.pos.txt) and [test/snp.neg.txt](test/snp.neg.txt)), we use the aforementioned steps ``predict.R" and ``predict.py" to generate the input features, which will be stored in another folder ``test".  Then, we call ``predict.py" to predict the functional scores.
+For given new indels (example: [test/snp.pos.txt](test/snp.pos.txt) and [test/snp.neg.txt](test/snp.neg.txt)), we use the aforementioned steps `predict.R` and `predict.py` to generate the input features, which will be stored in another folder `test`.  Then, we call `predict.py` to predict the functional scores.
 
 ```bash
 python predict.py --path ../test --model ../res/model.json --output ../res/output.txt
@@ -140,9 +142,9 @@ To make TIVAN-indel widely accessible to the research community, we provide the 
 
 ### Data and code preparation
 
-- All noncoding small indels in 1000 Genomes (sindel.noncoding.1kg.rda) can be downloaded from [Here](https://drive.google.com/file/d/1u7PV9JqM1YmllutP56Gv0faP_Yhf1h4_/view?usp=share_link)
+- All noncoding small indels in 1000 Genomes (sindel.noncoding.1kg.rda) can be downloaded from [here](https://drive.google.com/file/d/1u7PV9JqM1YmllutP56Gv0faP_Yhf1h4_/view?usp=share_link).
 
-- The precomputed scores for All noncoding small indels in 1000 Genomes across 44 tissues/cell types (e.g., Adipose_Subcutaneous.score.rda) in GTEX can be downloaded from [Here](https://drive.google.com/drive/folders/1fZ_V4_2sr-lPCa1HItXoUIvJ40qa_w_h?usp=share_link). The 44 tissues/cell types from GTEX are summarized in the following table.
+- The precomputed scores for All noncoding small indels in 1000 Genomes across 44 tissues/cell types (e.g., Adipose_Subcutaneous.score.rda) in GTEX can be downloaded from [here](https://drive.google.com/drive/folders/1fZ_V4_2sr-lPCa1HItXoUIvJ40qa_w_h?usp=share_link). The 44 tissues/cell types from GTEX are summarized in the following table.
 
 
 |Tissue                                |Tissue.class  |
