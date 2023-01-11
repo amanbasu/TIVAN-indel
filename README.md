@@ -191,9 +191,9 @@ To make TIVAN-indel widely accessible to the research community, we provide the 
 |Whole_Blood                           |Blood         |
 
 
-- TIVAN-indel.R: R software to retrieve the precomputed scores for query sindels and is available at [R/TIVAN-indel.R](R/TIVAN-indel.R))
+- TIVAN-indel.R: R software to retrieve the precomputed scores for query sindels and is available at [R/TIVAN-indel.R](R/TIVAN-indel.R)
 
-- region.txt: query regions in the following example ([example/region.txt](example/region.txt))) such as:
+- region.txt: query regions in the following example ([example/region.txt](example/region.txt)) such as:
 
 <img width="881" alt="Screen Shot 2022-12-31 at 4 05 17 PM" src="https://user-images.githubusercontent.com/29525389/210155683-13f95a25-415d-47ae-bcc5-30d37b92f139.png">
 
