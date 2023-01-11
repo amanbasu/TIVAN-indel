@@ -61,7 +61,7 @@ BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
 
 ### Prepare training data
 
-We use a compilation of both generic functional annotations and tissue-specific functional annotations to train the TIVAN-indel model. Given query sindels (example: [train/snp.pos.txt](train/snp.pos.txt)), R script ``prepare.R" will generated (1) CADD annotations for query sindels and (2) reference genomic sequence and alterntive genomic sequence with sindels. 
+We use a compilation of both generic functional annotations and tissue-specific functional annotations to train the TIVAN-indel model. Given query sindels (example: [train/snp.pos.txt](train/snp.pos.txt)), R script ``prepare.R" will generated (1) CADD annotations for query sindels and (2) reference genomic sequence and alterntive genomic sequence with sindels. A R rda file ``CADD.indel.rda" contains the CADD annotations for all indels in 1000 Genome Project can be downloaded [Here](https://drive.google.com/file/d/1Eio1YYZNmrVIoqFg6r-GUTGuwjudi30P/view?usp=share_link) 
 
 
 Running the R command line with four arguments
@@ -69,7 +69,7 @@ Running the R command line with four arguments
 ```bash
 R --slave --args --no-save CADD.indel.rda train/snp.pos.txt train/snp.neg.txt train  <  prepare.R 
 
-- CADD.indel.rda:  a R rda file contains the CADD annotations for all indels in 1000 Genome Project, can be downloaded [Here](https://drive.google.com/file/d/1Eio1YYZNmrVIoqFg6r-GUTGuwjudi30P/view?usp=share_link) 
+- CADD.indel.rda:  a R rda file contains the CADD annotations for all indels in 1000 Genome Project.
 
 - snp.pos.txt: (example: [train/snp.pos.txt](train/snp.pos.txt)) a file with indel information "chr start end refallele and altallele" in the positve set
 
