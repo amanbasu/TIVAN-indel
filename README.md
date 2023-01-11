@@ -112,6 +112,8 @@ options:
 Example:
 python prepare.py --path ../train
 python prepare.py --path ../test
+
+``seq_features.h5" will be generated in the desired folder
 ```
 
 
