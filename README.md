@@ -11,11 +11,9 @@ By leveraging labelled noncoding sindels identified by cis-expression quantitati
 
 TIVAN-Indel is implemented by both R and Python and the requirements are
 
-### Python and Python packages
+### Python (3.9.6) packages
 
 ```
-python==3.9.6
-
 xgboost==1.5.1
 h5py==3.1.0
 matplotlib==3.4.3
@@ -26,15 +24,11 @@ scikit-learn==0.24.2
 tensorflow==2.6.0
 ```
 
-### R and R packages
+### R (4.1.1) packages
 ```
-R==4.1.1
-
 BSgenome.Hsapiens.UCSC.hg19
 data.table
 ```
-
-
 
 ## Usage
 
