@@ -1,4 +1,6 @@
-# TIVAN-Indel
+# TIVAN-indel: A computational framework for annotating and predicting noncoding regulatory small insertions and deletions
+
+Paper link: https://doi.org/10.1093/bioinformatics/btad060
 
 By leveraging labelled noncoding sindels identified by cis-expression quantitative trait loci (cis- eQTLs) analyses across 44 tissues in GTEx, and a compilation of both generic functional annotations and tissue-specific multi-omics features, we developed TIVAN-indel, which is a supervised computational framework for predicting noncoding sindels that potentially regulate the nearby gene expression. 
 
@@ -231,7 +233,22 @@ The expected otuput from Example Two is:
 <img width="881" alt="Screen Shot 2022-12-31 at 4 05 17 PM" src="https://user-images.githubusercontent.com/29525389/210155653-b3f622be-af92-4589-8fc1-dea9de285bda.png">
 
 
+## Citation
 
+```
+@article{10.1093/bioinformatics/btad060,
+    author = {Agarwal, Aman and Zhao, Fengdi and Jiang, Yuchao and Chen, Li},
+    title = "{TIVAN-indel: A computational framework for annotating and predicting noncoding regulatory small insertions and deletions}",
+    journal = {Bioinformatics},
+    year = {2023},
+    month = {01},
+    issn = {1367-4811},
+    doi = {10.1093/bioinformatics/btad060},
+    url = {https://doi.org/10.1093/bioinformatics/btad060},
+    note = {btad060},
+    eprint = {https://academic.oup.com/bioinformatics/advance-article-pdf/doi/10.1093/bioinformatics/btad060/48942673/btad060.pdf},
+}
+```
 
 
 
